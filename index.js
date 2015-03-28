@@ -1,4 +1,4 @@
-var xhr  = require('xhrpolyfill');
+var XMLHttpRequest  = require('xhrpolyfill');
 
 module.exports = function xhr2 (params, callback) {
   // calls: callback(data, response, xhr);
@@ -14,6 +14,7 @@ module.exports = function xhr2 (params, callback) {
       return params.headers ? params.headers : params.body ? header : {};
     })()
   };
+  var xhr = XMLHttpRequest();
   if (!xhr) { return null };
   xhr.open(args.method,args.url);
   for (var field in args.headers) {
