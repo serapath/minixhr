@@ -20,6 +20,13 @@ module.exports = function xhr2 (params, callback) {
   for (var field in args.headers) {
     xhr.setRequestHeader(field, args.headers[field]);
   }
-  xhr.onload=function(response){callback(this.response, response, xhr);};
+  xhr.onload=function(response){
+    var headerJSON = {}, h = xhr.getAllResponseHeaders();
+    h.match(/([^\n\r:]+):([^\n\r]+)/g).forEach(function(item){
+      var tmp = item.split(': ');
+      json[tmp[0]] = tmp[1];
+    });
+    callback(this.response, response, xhr, headerJSON);
+  };
   xhr.send(args.body||null);
 };
