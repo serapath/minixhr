@@ -24,7 +24,7 @@ module.exports = function xhr2 (params, callback) {
     var headerJSON = {}, h = xhr.getAllResponseHeaders();
     h.match(/([^\n\r:]+):([^\n\r]+)/g).forEach(function(item){
       var tmp = item.split(': ');
-      json[tmp[0]] = tmp[1];
+      headerJSON[tmp[0]] = tmp[1];
     });
     callback(this.response, response, xhr, headerJSON);
   };
