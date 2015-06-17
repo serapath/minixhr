@@ -20,7 +20,7 @@ module.exports = function xhr2 (params, callback) {
   for (var field in args.headers) {
     xhr.setRequestHeader(field, args.headers[field]);
   }
-  xhr.onload=function(response){
+  xhr.onload = xhr.onerror = function responseHandler (response){
     var headerJSON = {}, h = xhr.getAllResponseHeaders();
     h.match(/([^\n\r:]+):([^\n\r]+)/g).forEach(function(item){
       var tmp = item.split(': ');
