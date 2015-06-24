@@ -15,7 +15,7 @@ module.exports = function xhr2 (params, callback) {
     })()
   };
   var xhr = XMLHttpRequest();
-  if (!xhr) { return null };
+  if (!xhr) { throw new Error('No AJAX support'); };
   xhr.open(args.method,args.url);
   for (var field in args.headers) {
     xhr.setRequestHeader(field, args.headers[field]);
@@ -26,7 +26,9 @@ module.exports = function xhr2 (params, callback) {
       var tmp = item.split(': ');
       headerJSON[tmp[0]] = tmp[1];
     });
-    callback(this.response, response, xhr, headerJSON);
+    if (callback) {
+      callback(this.response, response, xhr, headerJSON);
+    }
   };
   xhr.send(args.body||null);
 };
