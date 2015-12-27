@@ -23,7 +23,7 @@ module.exports = function xhr2 (params, callback) {
   }
   xhr.onload = xhr.onerror = function responseHandler (response){
     var headerJSON = {}, h = xhr.getAllResponseHeaders()
-    (h.match(/([^\n\r:]+):([^\n\r]+)/g)||[]).forEach(function(item){
+    (h||'').match(/([^\n\r:]+):([^\n\r]+)/g).forEach(function(item){
       var tmp = item.split(': ')
       headerJSON[tmp[0]] = tmp[1]
     })
