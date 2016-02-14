@@ -3,21 +3,30 @@ super simpel and small cross-browser xhr
 
 # USAGE
 ```js
-var minixhr = require('minixhr');
+var minixhr = require('minixhr')
 
-var callback = function responseHandler (data, response, xhr, header) { console.log(data); };
+function responseHandler (error, data, response, xhr, header) {
+  if (error) console.error('timeout: ', error)
+  console.log(data)
+}
+
 var request  = { // can be 'url string' or object:
-  url          : 'http://github.com/serapath/holonify', // or e.g. http://ip.jsontest.com/a=1&b=2&c=3
+  url          : 'http://jsonplaceholder.typicode.com/posts/1',
   method       : 'POST',  // [optional] (defaults to 'GET')
   body         : 'payload', // [optional] payload data could be <formdata> or {key:val}'s or anything
+  timeout      : 2000 // [optional] (to set a timeout)
   header       : {} // [optional] (defaults to '{}' or in case of 'POST':
                    // {'X-Requested-With':'XMLHttpRequest','Content-Type':'application/x-www-form-urlencoded' } )
-};
+}
 
 // EXAMPLE 1
-minixhr(request); // [optional] callback - (e.g. leave out for POST Request where you don't care about a response
+var callback = responseHandler
+minixhr(request, callback) // [optional] callback - (e.g. leave out for POST Request where you don't care about a response
 
 // EXAMPLE 2
-minixhr('http://requestb.in/qpvy9dqp', function (data) { console.log(data); });
+minixhr('http://requestb.in/18b4srl1', function (data) { console.log(data) })
+// check http://requestb.in/18b4srl1?inspect afterwards to inspect
 
+// EXAMPLE 3 - github
+minixhr()
 ```

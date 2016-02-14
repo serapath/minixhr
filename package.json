@@ -1,8 +1,8 @@
 {
   "name": "minixhr",
-  "version": "1.3.7",
+  "version": "2.0.0",
   "description": "super simpel and small cross-browser xhr",
-  "main": "index.js",
+  "main": "minixhr.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,11 +13,14 @@
   "keywords": [
     "xhr",
     "mini",
+    "cors",
+    "http",
+    "browser",
     "cross-browser",
     "ajax"
   ],
   "author": "serapath <dev@serapath.de> (http://www.github.com/serapath)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/serapath/minixhr/issues"
   },
