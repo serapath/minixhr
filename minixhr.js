@@ -30,7 +30,7 @@ module.exports = function xhr2 (params, callback) {
     if (callback) callback(null, this.response, response, xhr, headerJSON)
   }
   var tt
-  xhr.ontimeout = function (error) { clearTimeout(tt); cancel(e) }
+  xhr.ontimeout = function (error) { clearTimeout(tt); cancel(error) }
   if (args.timeout > 0 ) xhr.timeout = tt = setTimeout(cancel, args.timeout)
   function cancel (e) {
     xhr.abort("timeout")
