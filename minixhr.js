@@ -21,5 +21,5 @@ module.exports = function xhr2 (params, callback) {
     })
     if (callback) callback(this.response, response, xhr, Hjson)
   }
-  xhr.send(args.body||null)
+  xhr.send(body||null)
 }
