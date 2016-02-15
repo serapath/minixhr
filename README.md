@@ -14,7 +14,6 @@ var request  = { // can be 'url string' or object:
   url          : 'http://jsonplaceholder.typicode.com/posts/1',
   method       : 'POST',  // [optional] (defaults to 'GET')
   body         : 'payload', // [optional] payload data could be <formdata> or {key:val}'s or anything
-  timeout      : 2000 // [optional] (to set a timeout)
   headers      : {} // [optional] (defaults to '{}' or in case of 'POST':
                    // {'X-Requested-With':'XMLHttpRequest','Content-Type':'application/x-www-form-urlencoded' } )
 }
