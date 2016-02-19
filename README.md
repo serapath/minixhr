@@ -5,8 +5,7 @@ super simpel and small cross-browser xhr
 ```js
 var minixhr = require('minixhr')
 
-function responseHandler (error, data, response, xhr, header) {
-  if (error) console.error('timeout: ', error)
+function responseHandler (data, response, xhr, header) {
   console.log(data)
 }
 
