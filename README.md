@@ -1,30 +1,26 @@
 # minixhr
-super simpel and small cross-browser xhr
+super simple and small cross-browser XMLHttpRequest (XHR)
 
 # USAGE
 ```js
 var minixhr = require('minixhr')
 
-function responseHandler (data, response, xhr, header) {
+var callback = function responseHandler (data, response, xhr, header) {
   console.log(data)
 }
 
 var request  = { // can be 'url string' or object:
-  url          : 'http://jsonplaceholder.typicode.com/posts/1',
+  url          : 'http://requestb.in/18b4srl1',
   method       : 'POST',  // [optional] (defaults to 'GET')
-  body         : 'payload', // [optional] payload data could be <formdata> or {key:val}'s or anything
+  body         : '{ "foo": 123, "bar": "abc" }', // [optional] payload data could be <formdata> or {key:val}'s or anything
   headers      : {} // [optional] (defaults to '{}' or in case of 'POST':
                    // {'X-Requested-With':'XMLHttpRequest','Content-Type':'application/x-www-form-urlencoded' } )
 }
 
 // EXAMPLE 1
-var callback = responseHandler
 minixhr(request, callback) // [optional] callback - (e.g. leave out for POST Request where you don't care about a response
 
 // EXAMPLE 2
-minixhr('http://requestb.in/18b4srl1', function (data) { console.log(data) })
+minixhr('http://jsonplaceholder.typicode.com/posts/1', callback)
 // check http://requestb.in/18b4srl1?inspect afterwards to inspect
-
-// EXAMPLE 3 - github
-minixhr()
 ```
