@@ -1,6 +1,6 @@
 {
   "name": "minixhr",
-  "version": "3.0.4",
+  "version": "3.1.0",
   "description": "super simpel and small cross-browser xhr",
   "main": "minixhr.js",
   "scripts": {
