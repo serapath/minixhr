@@ -1,14 +1,12 @@
-var XMLHttpRequest  = require('xhrpolyfill')
 module.exports = function xhr2 (params, callback) {
   var url = typeof params === 'string' ? params : params.url
-  var method = params.method || (params.data ? 'POST': 'GET')
+  var method = params.method || (params.data ? 'POST' : 'GET')
   var body = params.data
   var H = params.headers ? params.headers : params.body ? {
     'X-Requested-With' :'XMLHttpRequest',
     'Content-Type'     :'application/x-www-form-urlencoded'
   } : {}
-  var xhr = XMLHttpRequest()
-  if (!xhr) throw new Error('No AJAX support')
+  var xhr = new XMLHttpRequest()
   xhr.open(method, url)
   for (var key in H) xhr.setRequestHeader(key, H[key])
   xhr.onload = xhr.onerror = function (response) {
