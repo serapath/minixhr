@@ -6,9 +6,11 @@ super simple and small cross-browser XMLHttpRequest (XHR)
 var minixhr = require('minixhr')
 
 // EXAMPLE 1
-// response handler
-function callback (data, response, xhr, header) { console.log(data) }
-minixhr('http://jsonplaceholder.typicode.com/posts/1', callback)
+minixhr('https://jsonplaceholder.typicode.com/posts/1', response)
+
+function response (data, response, xhr, header) {
+  console.log(data)
+}
 
 // EXAMPLE 2
 // make a temporary `http://requestb.in` to try the next example, e.g.
@@ -20,6 +22,7 @@ var request  = { // can be 'url string' or object:
   /*optional*/headers : {} // (defaults to '{}' OR in case of 'POST' it defaults to:
               // {'X-Requested-With':'XMLHttpRequest','Content-Type':'application/x-www-form-urlencoded' } )
 }
+
 minixhr(request) // [optional] callback - (e.g. leave out for POST Request where you don't care about a response
 // check http://requestb.in/18b4srl1?inspect afterwards to inspect
 ```
